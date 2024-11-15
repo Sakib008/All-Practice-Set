@@ -2,6 +2,8 @@ import {NavLink,Routes,Route} from 'react-router-dom';
 
 import './App.css';
 import {Todo} from './useReducer/pages/Todo';
+import { DoneTodo } from './useReducer/components/todo/Done';
+import { OpenTodo } from './useReducer/components/todo/Open';
 // import { Reducer1 } from ' ./useReducer/reducer1';
 
 function App() {
@@ -15,6 +17,8 @@ function App() {
       </NavLink>
       <Routes>
         <Route path='/todo' element={<Todo />} />
+        <Route path='/todo/done' element={<DoneTodo />} />
+        <Route path='/todo/open' element={<OpenTodo />} />
       </Routes>
       
     </div>

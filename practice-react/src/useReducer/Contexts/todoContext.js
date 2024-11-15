@@ -6,11 +6,11 @@ export function TodoContextProvider({children}){
 
     const [isLoading,setIsLoading] = useState(false);
     const [todoItem,setTodoItem] = useState([]);
-    const fetchTodo=()=>{
+    const fetchTodo= async ()=>{
         setIsLoading(true)
         try{
-            const response = fakeFetch("https://example.com/api/todos");
-            setTodoItem(response.data);
+            const response = await  fakeFetch("https://example.com/api/todos");
+            setTodoItem(response.data.todos);
             setIsLoading(false);
         }catch(err){
             console.error(err);
