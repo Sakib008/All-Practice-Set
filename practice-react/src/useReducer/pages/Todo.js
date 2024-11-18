@@ -21,7 +21,7 @@ export function Todo() {
       <TodoHeader />
       { isLoading && <p>Loading...</p>}
       {todoItem.map((product) => (
-        <TodoCard key={product.id} todo={product} />
+        <TodoCard key={product.id} {...product} />
       ))}
     </div>
   );
