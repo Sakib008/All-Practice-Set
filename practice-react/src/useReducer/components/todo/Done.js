@@ -17,7 +17,7 @@ export function DoneTodo(){
         <h1 class="text-center text-2xl text-amber-400 font-bold">Done List</h1>
         <NavLink to='/todo' className='bg-pink-500 ml-10 rounded-md text-xl text-white p-1 m-1' >Back</NavLink>
         {CompletedTodo.map((product)=>
-        <TodoCard todo={product} isDone/>
+        <TodoCard {...product} isDone/>
         )}
     </div>
 
