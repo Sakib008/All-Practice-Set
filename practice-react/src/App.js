@@ -4,6 +4,7 @@ import './App.css';
 import {Todo} from './useReducer/pages/Todo';
 import { DoneTodo } from './useReducer/components/todo/Done';
 import { OpenTodo } from './useReducer/components/todo/Open';
+import SingleTodo from './useReducer/components/todo/SingleTodo';
 // import { Reducer1 } from ' ./useReducer/reducer1';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path='/todo' element={<Todo />} />
         <Route path='/todo/done' element={<DoneTodo />} />
         <Route path='/todo/open' element={<OpenTodo />} />
+        <Route path='/todo/:todoId' element={<SingleTodo/>} />
       </Routes>
       
     </div>
