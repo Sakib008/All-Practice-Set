@@ -19,11 +19,13 @@ export function TodoContextProvider({ children }) {
   };
 
   const handleSingleTodo = (todo) => setSingleTodo(todo);
-
+  const handleUpdateStatus = (id)=>{
+    setTodoItem((prevTodo)=> prevTodo.map((todo)=>todo.id===id? {...todo,isCompleted : true} : todo))
+  }
 
   return (
     <TodoContext.Provider
-      value={{ isLoading, fetchTodo, todoItem, handleSingleTodo, singleTodo }}
+      value={{ isLoading, fetchTodo, todoItem, handleSingleTodo,handleUpdateStatus, singleTodo }}
     >
       {children}
     </TodoContext.Provider>

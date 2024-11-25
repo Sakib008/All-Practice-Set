@@ -7,7 +7,10 @@ export function DoneTodo(){
     const {fetchTodo, todoItem } = useContext(TodoContext);
 
     useEffect(()=>{
-        fetchTodo()
+        if(todoItem.length<0){
+
+            fetchTodo()
+        }
     },[])
 
     const CompletedTodo = todoItem.filter(({isCompleted})=>isCompleted === true);
