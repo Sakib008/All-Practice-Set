@@ -1,19 +1,21 @@
 import { useContext, useEffect, useReducer } from "react";
+import {Link} from 'react-router-dom';
 
 import { emailContext } from "../Context/EmailContext";
 const Inbox = () => {
-  const { isLoading, handleEmail, emailData } = useContext(emailContext);
+  const { isLoading, handleEmail, emailData, markAsRead } =
+    useContext(emailContext);
 
   const initialVal = { unread: 0, read: 0 };
   const countMail = (state, action) => {
     switch (action.type) {
-      case "SET_COUNT":
+      case "SET_COUNT": {
         const unreadCount = action.payload?.filter(
           (email) => !email.read
         ).length;
         const readCount = action.payload?.filter((email) => email.read).length;
         return { ...state, unread: unreadCount, read: readCount };
-
+      }
       default:
         return state;
     }
@@ -45,9 +47,12 @@ const Inbox = () => {
       <div className="my-3 py-4 bg-sky-400">
         {emailData?.emails?.map((email) => (
           <div key={email.id} className="m-3">
-            <h1 className="inline-block text-xl">{email.subject}</h1>
-            {email.read && (
-              <button className="mx-4 bg-purple-600 text-white text-xl p-1 rounded-md">
+            <Link to={`/inbox/${email.id}`} className="inline-block text-xl underline underline-offset-4">{email.subject}</Link>
+            {!email.read && (
+              <button
+                onClick={() => markAsRead(email.id)}
+                className="mx-4 bg-purple-600 text-white text-xl p-1 rounded-md"
+              >
                 Mark as Read
               </button>
             )}
