@@ -1,5 +1,5 @@
 import { useContext, useEffect, useReducer } from "react";
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 import { emailContext } from "../Context/EmailContext";
 const Inbox = () => {
@@ -23,7 +23,9 @@ const Inbox = () => {
 
   const [state, dispatch] = useReducer(countMail, initialVal);
   useEffect(() => {
-    handleEmail();
+    if (emailData.length === 0) {
+      handleEmail();
+    }
   }, []);
 
   useEffect(() => {
@@ -35,7 +37,8 @@ const Inbox = () => {
 
   return (
     <div className="w-[50%] mx-auto ">
-      <div className="text-center text-2xl bg-red-400">
+      <div className="text-center text-2xl bg-red-400 relative">
+        <Link to='/' className='absolute top-3 left-4 bg-red-600 text-white px-2 rounded-lg p-1'>Back</Link>
         <p className="bg-yellow-400 px-8 rounded-sm inline-block py-1">
           {isLoading ? <span>...Loading</span> : <span>Inbox</span>}
         </p>
@@ -47,7 +50,12 @@ const Inbox = () => {
       <div className="my-3 py-4 bg-sky-400">
         {emailData?.emails?.map((email) => (
           <div key={email.id} className="m-3">
-            <Link to={`/inbox/${email.id}`} className="inline-block text-xl underline underline-offset-4">{email.subject}</Link>
+            <Link
+              to={`/inbox/${email.id}`}
+              className="inline-block text-xl underline underline-offset-4"
+            >
+              {email.subject}
+            </Link>
             {!email.read && (
               <button
                 onClick={() => markAsRead(email.id)}
