@@ -6,8 +6,10 @@ export const emailContext = createContext();
 
 export const EmailContextProvider = ({ children }) => {
   const [emailData, setEmailData] = useState([]);
-  //   const [sendEmail, setSendEmail] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+
+// Fetching Emails
 
   const handleEmail = async () => {
     setIsLoading(true);
@@ -21,6 +23,8 @@ export const EmailContextProvider = ({ children }) => {
       setIsLoading(false);
     }
   };
+
+//mark as read button function
 
   const markAsRead = (id) => {
     setEmailData((prevEmail) => ({
