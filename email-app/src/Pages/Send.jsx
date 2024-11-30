@@ -14,7 +14,8 @@ const Send = () => {
 
   return (
     <div className="w-[50%] mx-auto ">
-      <div className="text-center text-2xl bg-green-400">
+      <div className="text-center text-2xl py-2 bg-green-400 relative">
+      <Link to='/' className='absolute top-2 left-4 bg-red-600 text-white px-2 rounded-lg p-1'>Back</Link>
         <p className="bg-yellow-400 px-8 rounded-sm inline-block py-1">
           {isLoading ? <span>...Loading</span> : <span>Send</span>}
         </p>
