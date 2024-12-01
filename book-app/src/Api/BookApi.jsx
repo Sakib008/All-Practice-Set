@@ -1,7 +1,7 @@
 export const fakeFetch = (url) => {
     return new Promise((resolve, reject) => {
     setTimeout(() => {
-    if (url === 'https://example.com/api/books') {
+    if (url === 'https://latestbooks.com/api/books') {
     resolve({
              status: 200,
              message: 'Success',
@@ -95,6 +95,6 @@ export const fakeFetch = (url) => {
              message: 'Books list not found.',
     })
     }
-    }, 2000)
+    }, 1000)
     })
     }
