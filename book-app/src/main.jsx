@@ -8,10 +8,10 @@ import { BookContextProvider } from "./Context/BookContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BookContextProvider>
-      <Router>
+    <Router>
+      <BookContextProvider>
         <App />
-      </Router>
-    </BookContextProvider>
+      </BookContextProvider>
+    </Router>
   </StrictMode>
 );
