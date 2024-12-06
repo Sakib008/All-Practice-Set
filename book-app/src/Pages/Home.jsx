@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect,useContext } from "react";
 
-import { fakeFetch } from "../Api/BookApi";
+import {BookContext} from '../Context/BookContext';
 import { BookItem } from "../Components/BookItem";
 
+
+
 export function Home() {
-  const [isLoading, setIsLoading] = useState(false);
-  const [books, setBooks] = useState([]);
-  const handleBooks = async () => {
-    setIsLoading(true);
-    try {
-      const response = await fakeFetch("https://latestbooks.com/api/books");
-      setBooks(response.data.books);
-      setIsLoading(false);
-    } catch (err) {
-      console.error(err);
-      setIsLoading(false);
-    }
-  };
+  
+  const {books,handleBooks,isLoading} = useContext(BookContext);
 
   useEffect(() => {
-    handleBooks();
-  }, []);
+    if (books.length === 0) {
+      handleBooks();
+    }
+  }, [books,handleBooks]);
 
   return (
     <div className="max-w-screen-2xl m-auto my-4 ">
@@ -30,8 +23,8 @@ export function Home() {
         </p>
       </div>
       <div className="flex flex-wrap">
-        {books?.map((book,index) => (
-            <BookItem {...book} index={index} key={book.id}/>
+        {books?.map((book, index) => (
+          <BookItem {...book} index={index} key={book.id} />
         ))}
       </div>
     </div>
