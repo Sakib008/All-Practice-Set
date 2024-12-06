@@ -4,7 +4,8 @@ import './App.css'
 import Home from './Pages/Home'
 import Inbox from './Pages/Inbox'
 import Send from './Pages/Send'
-import IndividualEmail from './Pages/IndividualEmail'
+import SingleEmailInbox from './Pages/SingleEmailInbox'
+import SingleEmailSend from './Pages/SingleEmailSend'
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
         <Route path='/' element={<Home/>}/>
         <Route path='/inbox' element={<Inbox/>}/>
         <Route path='/send' element={<Send/>}/>
-        <Route path='/mail/:mailId' element={<IndividualEmail/>}/>
+        <Route path='/inbox/:emailId' element={<SingleEmailInbox/>}/>
+        <Route path='/send/:sendId' element={<SingleEmailSend/>}/>
       </Routes>
     </div>
 
