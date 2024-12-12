@@ -8,12 +8,8 @@ export const BookItem = (book) => {
   const {
     id,
     title,
-    author,
-    publisher,
-    year,
     image,
     price,
-    read,
     index,
     favoriteBook,
     readBook,
