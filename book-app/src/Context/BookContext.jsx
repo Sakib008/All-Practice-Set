@@ -6,6 +6,13 @@ export const BookContext = createContext();
 
 
 export const BookContextProvider = ({ children }) => {
+  
+    // Require Auth 
+  
+    const [isLogin,setIsLogin] = useState(false);
+
+  // Reducer Function
+
   const initialVal = { readBooks: [], favoriteBooks: [] };
 
   const bookReducer = (state, action) => {
@@ -66,7 +73,7 @@ export const BookContextProvider = ({ children }) => {
   };
 
   return (
-    <BookContext.Provider value={{ state, dispatch,profile,isLoading,books,handleBooks }}>
+    <BookContext.Provider value={{ state, dispatch,profile,isLoading,books,handleBooks,isLogin,setIsLogin }}>
       {children}
     </BookContext.Provider>
   );
